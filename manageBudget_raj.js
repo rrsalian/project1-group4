@@ -1,8 +1,7 @@
 class budget {
-    id = 0;
-    category;
-    text;
-    amount;
+    budget = 0;
+    expense = 0;
+    balance = 0;
     transactions = [];
 
     constructor(transactions) {        
@@ -22,5 +21,9 @@ class budget {
     deleteTransaction(id) {
         const index = this.transactions.find(element => element.id = id);
         this.transactions.splice(index,1);
+    }
+
+    updateValues() {        
+        
     }
 }

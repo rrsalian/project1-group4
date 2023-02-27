@@ -5,6 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        
+        * {
+            border: 0;
+            padding: 0;
+        }
+
+        input , button {
+            margin: 10px;
+            border: 1px solid grey;
+            border-radius: 5%;
+        }
+        
+    </style>
 </head>
 <body>
     <div id = "mainContainer">
@@ -20,6 +34,15 @@
             <input id="expenseAmount" name="expenseAmount" type="number"/>
             <button class="addTransaction" name="addExpense" value="buttom">Add Expense</button>
         </div>
+        <div>
+            <label>Budget</label>
+            <input id="budget" name="budget" type="number" readonly/>
+            <label>Expense</label>
+            <input id="expense" name="expense" type="number" readonly/>
+            <label>Balance</label>
+            <input id="balance" name="balance" type="number" readonly/>
+        </div>
+
     </div>
     <script src="./manageBudget_raj.js"></script>
     <script src="budgetApp_raj.js"></script>

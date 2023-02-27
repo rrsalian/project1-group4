@@ -6,7 +6,7 @@
     const mainContainer = document.getElementById("mainContainer");
     const tblContainer = document.createElement("div");
     const table = document.createElement("table");
-    const tblBody = document.createElement("tbody");
+    const tblBody = document.createElement("tbody");    
 
     tblContainer.classList.add("tblContainer");
 
@@ -32,10 +32,17 @@
                 myAmount = +document.getElementById('expenseAmount').value;
                 transactionType = "Entertainment";
             }
-
             transaction = myBudget.addTransaction(transactionType, myText, myAmount);
+            myBudget.updateValues();
+            
 
             buildTable(transaction, tblContainer, table, tblBody);
+
+            document.getElementById('budget').value = myBudget.budget;
+            document.getElementById('budgetAmount').value = null;
+            document.getElementById('expenseText').value = null;
+            document.getElementById('expenseAmount').value = null;
+            
         })
     }
 }())
