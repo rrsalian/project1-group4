@@ -14,13 +14,15 @@ class budget {
         transaction.category = category;
         transaction.text = text;
         transaction.amount = amount;        
-        this.transactions.push(transaction); 
-        return transaction;   
+        this.transactions.push(transaction);
+        this.updateValues();
+        return transaction;
     }
 
     deleteTransaction(id) {
         const index = this.transactions.find(element => element.id = id);
         this.transactions.splice(index,1);
+        this.updateValues();
     }
 
     updateValues() {
