@@ -5,8 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Buddy</title>
+    <link rel="stylesheet" href="budgetBuddy.css">
 </head>
 <body>
-    
+    <header>
+        <h1>Welcome to Budget Buddy!</h1>
+    </header>
+    <section id="budgetinput">
+
+        <div id = "mainContainer">
+            <div>
+                <label> Enter Weekly Budget</label>
+                <input  id="budgetAmount" name="budgetAmount" type="num">
+                <button class="addTransaction" name="addBudget" value="buttom">Add Budget</button>
+            </div> 
+        </div>
+    </section>
+        <section id="expenses">
+
+            <div>
+                <label for="expenseText">What are you purchasing?</label>
+                <select name="expenseText" id="expenseText">
+                    <option value="entertainment">Entertainment</option>
+                    <option value="food">Food</option>
+                    <option value="clothing">Clothing</option>
+                    <option value="bills">Bills</option>
+                <label for="expenseAmount">Amount</label>
+                <input id="expenseAmount" name="expenseAmount" type="number"/>
+                <button class="addTransaction" name="addExpense" value="buttom">Add Expense</button>
+            </div>
+        </section>
+
+        <section id="data">
+            <div>
+                <label for="budget">Budget</label>
+                <input id="budget" name="budget" type="number" readonly/>
+                <label for="expense">Expense</label>
+                <input id="expense" name="expense" type="number" readonly/>
+                <label for="balance">Balance</label>
+                <input id="balance" name="balance" type="number" readonly/>
+            </div>
+        </section>
+        
+    <footer>
+
+    </footer>
+
+    <script src="./budgetClass.js"></script>
+    <script src="./budgetBuddy.js"></script>
 </body>
 </html>
