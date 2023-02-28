@@ -6,6 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budget Buddy</title>
     <link rel="stylesheet" href="budgetBuddy.css">
+
+
+    <!-- I need help figuring out how to get it into JS, when I put this in the JS file, it doesn't work -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        let data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Entertainment', 50], //Still need to work on the code, so these values update properly.
+          ['Food',         100], //I just hardcoded ones in to see if it would work.
+          ['Clothing',      75], // Anyone have any suggestions?  
+          ['Bills',        500],
+        ]);
+
+        let options = {
+          title: ''
+        };
+
+        let chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+
+
 </head>
 <body id="main">
     <header>
@@ -43,6 +73,10 @@
                 <label for="balance">Balance</label>
                 <input id="balance" name="balance" type="number" readonly/>
             </div>
+        </section>
+
+        <section>
+            <div id="piechart" style="width: 100%; height: 300px;"></div>
         </section>
         
     <footer>
