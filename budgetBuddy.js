@@ -39,6 +39,9 @@
             
 
             document.getElementById('budget').value = myBudget.budget;
+            document.getElementById('expense').value = myBudget.expense;
+            document.getElementById('balance').value = myBudget.balance;
+            
             document.getElementById('budgetAmount').value = null;
             document.getElementById('expenseText').value = null;
             document.getElementById('expenseAmount').value = null;

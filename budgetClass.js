@@ -23,7 +23,19 @@ class budget {
         this.transactions.splice(index,1);
     }
 
-    updateValues() {        
+    updateValues() {
+        let budgetAmt = 0;
+        let expenseAmt = 0;
+
+        for (const transaction of this.transactions) {            
+            if (transaction.category === "Budget") 
+                budgetAmt = budgetAmt + transaction.amount;
+            else
+                expenseAmt = expenseAmt + transaction.amount;            
+        }      
         
+        this.budget  = budgetAmt;
+        this.expense = expenseAmt;
+        this.balance = budgetAmt - expenseAmt;
     }
 }
