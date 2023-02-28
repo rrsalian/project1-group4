@@ -28,9 +28,9 @@
                 transactionType = "Budget";
             }
             else {
-                myText = document.getElementById('expenseText').value;
+                myText = document.getElementById('expenseText').value; 
                 myAmount = +document.getElementById('expenseAmount').value;
-                transactionType = "Entertainment";
+                transactionType = "Expense"; //<=== I just wanted to see if changing this would help.  JI
             }
             transaction = myBudget.addTransaction(transactionType, myText, myAmount);
             myBudget.updateValues();            
@@ -66,3 +66,8 @@ function buildTable(obj, table, tblBody) {
     tblBody.appendChild(row);
     table.appendChild(row);
 }
+
+
+//Just making notes as I think of things:
+//Does anyone know how to add that alert if they spend all their budget?  
+//Even if it's just a pop-up alert - if(balance <= 0) and it returns an alert?
