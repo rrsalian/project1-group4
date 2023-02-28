@@ -46,6 +46,7 @@
             document.getElementById('expenseAmount').value = null;
             
         })
+        
     }
 }())
 
