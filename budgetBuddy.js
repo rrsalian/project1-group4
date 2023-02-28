@@ -3,14 +3,14 @@
     const transactions = [];
     budget.counter = 0;
     let myBudget = new budget(transactions);
-    const mainContainer = document.getElementById("mainContainer");
+    const main = document.getElementById("main");
     const tblContainer = document.createElement("div");
     const table = document.createElement("table");
     const tblBody = document.createElement("tbody");    
 
     tblContainer.classList.add("tblContainer");
 
-    mainContainer.appendChild(tblContainer);
+    main.appendChild(tblContainer);
     tblContainer.appendChild(table);
 
     const addTransactions = document.querySelectorAll(".addTransaction");
@@ -30,22 +30,20 @@
             else {
                 myText = document.getElementById('expenseText').value; 
                 myAmount = +document.getElementById('expenseAmount').value;
-                transactionType = "Expense"; //<=== I just wanted to see if changing this would help.  JI
+
+                transactionType = "Expense";
             }
-            transaction = myBudget.addTransaction(transactionType, myText, myAmount);
-            myBudget.updateValues();            
+            transaction = myBudget.addTransaction(transactionType, myText, myAmount);            
 
-            buildTable(transaction, tblContainer, table, tblBody);
-            
+            buildTable(transaction, tblContainer, table, tblBody);            
 
-            document.getElementById('budget').value = myBudget.budget;
+            document.getElementById('budget').value  = myBudget.budget;
             document.getElementById('expense').value = myBudget.expense;
             document.getElementById('balance').value = myBudget.balance;
             
             document.getElementById('budgetAmount').value = null;
             document.getElementById('expenseText').value = null;
-            document.getElementById('expenseAmount').value = null;
-            
+            document.getElementById('expenseAmount').value = null;            
         })
     }
 }())
@@ -55,10 +53,10 @@ function buildTable(obj, table, tblBody) {
     let row = document.createElement('tr');
 
     for (var val of Object.values(obj)) {
-        let col = document.createElement('td');
+        let col = document.createElement('td');        
         col.textContent = val;
         col.style.border = "1px solid green";
-        col.style.padding = "10px";
+        col.style.padding = "3px";
         row.appendChild(col);
     }
 
