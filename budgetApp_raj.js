@@ -14,10 +14,10 @@
     tblContainer.appendChild(table);
 
     const addTransactions = document.querySelectorAll(".addTransaction");
-    console.log(addTransactions);
+    //console.log(addTransactions);
     for (const addTransaction of addTransactions) {
         addTransaction.addEventListener('click', (e) => {
-            console.log(e.target);
+            //console.log(e.target);
             let transaction = {};
             let myText = "";
             let myAmount = 0;
@@ -33,10 +33,10 @@
                 transactionType = "Entertainment";
             }
             transaction = myBudget.addTransaction(transactionType, myText, myAmount);
-            myBudget.updateValues();
-            
+            myBudget.updateValues();            
 
             buildTable(transaction, tblContainer, table, tblBody);
+            
 
             document.getElementById('budget').value = myBudget.budget;
             document.getElementById('budgetAmount').value = null;
