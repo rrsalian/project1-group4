@@ -50,7 +50,7 @@ input {
 }
 
 section {
-    background-color: #f5f5f5;
+    background-color: #f5f5f5; <== if you decide to use this, still have to remove it from '*'
     border: 1px dotted blue;
 }
 
