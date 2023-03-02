@@ -39,38 +39,40 @@ section {
 #mainContainer {
     border-radius: 50px;
     background-color: #cee7f1;
-    width: 450px;
+    width: 400px;
     height: 200px;
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
-    font-size: 25px;
+    padding: 10px;
     margin-bottom: 10px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 #expenses {
     border-radius: 50px;
-    width: 450px;
+    width: 400px;
     height: 200px;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    align-items: center;
+    text-align: center;
     margin-bottom: 10px;
+    padding: 10px;
     background-image: linear-gradient(#bbc9b4, #ced4cd);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 #data {
     border-radius: 50px;
-    width: 450px;
+    width: 400px;
     height: 200px;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 10px;
     background-image: linear-gradient(#f5be8a, #eaddc6);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     margin-bottom: 10px;
+    text-align: center;
 }
 button {
     background-color: #599bff;
@@ -80,7 +82,13 @@ button {
     border-radius: 35px;
     border: 1px solid #599bff;
 }
+#expenseText {
+    height: 25px;
+    width: 125px;
+}
 input {
+    height: 25px;
+    width: 100px;
     margin: 10px;
     border: 1px solid grey;
     border-radius: 5%;
@@ -96,7 +104,23 @@ input {
     100% { opacity: 1; }
   }
   @media screen and (min-width: 768px) {
-
+header {
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#desktopLayout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#mainContainer, #expenses, #data {
+    margin: 10px
+}
+#allAround {
+    height: 100vh;
+}
   }
 /* Joan - I tested these out.  You're probably working on them, but I wanted to help where I can...
         The title wasn't showing up, so I added an h1 and moved the background-color from 
