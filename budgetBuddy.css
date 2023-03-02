@@ -1,21 +1,76 @@
 * {
-    border: 0;
+    margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
     font-family: 'Lato', sans-serif;
     font-family: 'Open Sans', sans-serif;
 }
 header {
-    color: #f5f5f5;
-    background-color: #6b49fb;
+    color: #3e3e3e;
+    /* background-color: #00a2db; */
     text-align: center;
     height: 50px;
     font-weight: bold;
-    font-size: 35px;
+    font-size: 30px;
     text-transform: uppercase;
+    background-image: linear-gradient(#cee7f1, #e6eef2);
+    width: 100%;
+}
+h1 {
+    background-color: #f0f0f0;
+    color: #00a2db;
+    width: 100vw;
+    text-align: center;
+    animation: fadeIn 5s;
+}
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#allAround {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    background-color: #f0f0f0;
+    box-sizing: border-box;
 }
 #mainContainer {
-    margin: 10px;
+    border-radius: 50px;
+    background-color: #cee7f1;
+    width: 450px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 25px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+#expenses {
+    border-radius: 50px;
+    width: 450px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+    background-image: linear-gradient(#bbc9b4, #ced4cd);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+#data {
+    border-radius: 50px;
+    width: 450px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-image: linear-gradient(#f5be8a, #eaddc6);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin-bottom: 10px;
 }
 button {
     background-color: #599bff;
@@ -31,3 +86,37 @@ input {
     border-radius: 5%;
 }
 
+#piechart {
+    width: 100%;
+    height: 300px;
+    align-self: center;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @media screen and (min-width: 768px) {
+
+  }
+/* Joan - I tested these out.  You're probably working on them, but I wanted to help where I can...
+        The title wasn't showing up, so I added an h1 and moved the background-color from 
+        * to a section.  The header shows up then.  I also changed it so the amounts are entered from the middle, rather than the side.
+         I also added a footer... in my head I'm thinking it'd be cool to have an animation in it,
+         but I don't know what.  -JI*/
+
+/* footer {
+    height: 100px;
+    width: 100%;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 25px;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 10px;
+}
+
+#budgetAmount, #expenseAmount {
+    text-align: center;
+} */
