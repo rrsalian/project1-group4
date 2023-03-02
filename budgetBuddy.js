@@ -1,7 +1,5 @@
 (function () {
-    /*
 
-    */
     const transactions = [];
     budget.counter = 0;
     let myBudget = new budget(transactions);
@@ -12,7 +10,8 @@
     const select = document.getElementById('expenseText');
     const expenseOptions = select.options;
     let expenseArr = [];
-
+    
+    table.classList.add("table");
     tblContainer.classList.add("tblContainer");
     main.appendChild(tblContainer);
     tblContainer.appendChild(table);
@@ -53,31 +52,36 @@
 
             document.getElementById('budgetAmount').value = null;
             document.getElementById('expenseAmount').value = null;
-            google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
+            
         })
+/*
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+        
+            let data = google.visualization.arrayToDataTable([
+            ['Task', 'Hours per Day'],
+            ['Entertainment', 50],
+            ['Food',         100],
+            ['Clothing',      75],
+            ['Bills',        500],
+            ]);
+        
+            let options = {
+            title: ''
+            };
+        
+            let chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        
+            chart.draw(data, options);
+        }        
+*/
     }
 }())
 
 
-function drawChart() {
-        
-    let data = google.visualization.arrayToDataTable([
-    ['Task', 'Hours per Day'],
-    ['Entertainment', 50],
-    ['Food',         100],
-    ['Clothing',      75],
-    ['Bills',        500],
-    ]);
 
-    let options = {
-    title: ''
-    };
-
-    let chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-    chart.draw(data, options);
-}
 
 function buildTable(obj, table, tblBody) {
 
