@@ -24,14 +24,16 @@
     <section id="budgetinput">
         <div id = "mainContainer">
             <div>
+                <p id="error_msg_budget"></p>
                 <label>Enter Weekly Budget</label>
-                <input  id="budgetAmount" name="budgetAmount" type="num">
-                <button class="addTransaction" name="addBudget" value="button">Add Budget</button>
+                <input  id="budgetAmount" name="budgetAmount" type="number">
+                <button class="addBudget" name="Budget" value="button">Add Budget</button>
             </div> 
         </div>
     </section>
         <section id="expenses">
             <div>
+                <p id="error_msg_expense"></p>
                 <label for="expenseText">What are you purchasing?</label>
                 <select name="expenseText" id="expenseText">
                     <option value="entertainment" selected="selected">Entertainment</option>
@@ -40,7 +42,7 @@
                     <option value="bills">Bills</option>
                 <label for="expenseAmount">Amount</label>
                 <input id="expenseAmount" name="expenseAmount" type="number"/>
-                <button class="addTransaction" name="addExpense" value="buttom">Add Expense</button>
+                <button class="addExpense" name="Expense" value="buttom">Add Expense</button>
             </div>
         </section>
 

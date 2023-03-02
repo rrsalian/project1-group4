@@ -25,22 +25,22 @@ class budget {
         this.updateValues();
     }
 
-    getExpenseSummary(expenseOptionsArr) {
-        let expenseArr = [];
-        const expenses = this.transactions;
+    getSumByCategory(array) {
+        let categoryArr = [];
+        const elements = this.transactions;
         let arrObjs = [];
         let total = 0;
 
-        for(let i = 0 ; i < expenseOptionsArr.length; i++) {
-            arrObjs = expenses.filter( element => element.text === expenseOptionsArr[i]);            
+        for(let i = 0 ; i < array.length; i++) {
+            arrObjs = elements.filter( element => element.text === ''? element.category === array[i]: element.text === array[i]);
             
             total = arrObjs.reduce( (a,b) => {
                 return a + b.amount;
             },0);
             total = parseFloat(total).toFixed(2);
-            expenseArr.push({text:expenseOptionsArr[i], total:total});
+            categoryArr.push({text:array[i], total:total});
         }       
-        return expenseArr;
+        return categoryArr;
     }
 
     updateValues() {
@@ -48,12 +48,12 @@ class budget {
         let expenseAmt = 0;
 
         for (const transaction of this.transactions) {
-            if (transaction.category === "Budget")
+            if (transaction.category === "budget")
                 budgetAmt = budgetAmt + transaction.amount;
             else
                 expenseAmt = expenseAmt + transaction.amount;
         }
-
+                
         this.budget = parseFloat(budgetAmt).toFixed(2)
         this.expense = parseFloat(expenseAmt).toFixed(2);
         this.balance = budgetAmt - expenseAmt;
