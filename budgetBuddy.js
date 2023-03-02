@@ -61,10 +61,10 @@
 
             let data = google.visualization.arrayToDataTable([
                 ['Task', 'Hours per Day'],
-                ['Entertainment', 60], //Still need to work on the code, so these values update properly.
-                ['Food', 500], //I just hardcoded ones in to see if it would work.
-                ['Clothing', 15], // Anyone have any suggestions?  JI
-                ['Bills', 20],
+                [expenseArr[0].text, +expenseArr[0].total],
+                [expenseArr[1].text, +expenseArr[1].total],
+                [expenseArr[2].text, +expenseArr[2].total],
+                [expenseArr[3].text, +expenseArr[3].total],
             ]);        
             
             let options = {
