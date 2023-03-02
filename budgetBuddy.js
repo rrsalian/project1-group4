@@ -84,9 +84,9 @@
 
             let data = google.visualization.arrayToDataTable([
                 ['Expense Type', 'Amount'],
-                [expenseSumArray[0].text, +expenseSumArray[0].total], //Still need to work on the code, so these values update properly.
-                [expenseSumArray[1].text, +expenseSumArray[1].total], //I just hardcoded ones in to see if it would work.
-                [expenseSumArray[2].text, +expenseSumArray[2].total], // Anyone have any suggestions?  JI
+                [expenseSumArray[0].text, +expenseSumArray[0].total], 
+                [expenseSumArray[1].text, +expenseSumArray[1].total], 
+                [expenseSumArray[2].text, +expenseSumArray[2].total], 
                 [expenseSumArray[3].text, +expenseSumArray[3].total],
             ]);
 
@@ -116,11 +116,11 @@
     function drawChart() {
 
         let data = google.visualization.arrayToDataTable([
-            ['Task', 'Hours per Day'],
-            ['Entertainment', 50], //Still need to work on the code, so these values update properly.
-            ['Food', 100], //I just hardcoded ones in to see if it would work.
-            ['Clothing', 75], // Anyone have any suggestions?  JI
-            ['Bills', 500],
+            ['Expense Type', 'Amount'],
+            ['Entertainment', 0], 
+            ['Food', 0], 
+            ['Clothing', 0], 
+            ['Bills', 0],
         ]);
 
         let options = {
@@ -151,8 +151,3 @@ function buildTable(obj, table, tblBody) {
     tblBody.appendChild(row);
     table.appendChild(row);
 }
-
-
-//Just making notes as I think of things:
-//Does anyone know how to add that alert if they spend all their budget? JI
-//Even if it's just a pop-up alert - if(balance <= 0) and it returns an alert? JI
