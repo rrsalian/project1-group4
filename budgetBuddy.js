@@ -1,7 +1,5 @@
 (function () {
-    /*
 
-    */
     const transactions = [];
     budget.counter = 0;
     let myBudget = new budget(transactions);
@@ -12,6 +10,8 @@
     const select = document.getElementById('expenseText');
     const expenseOptions = select.options;
     let expenseArr = [];
+
+    table.classList.add("table");
 
     tblContainer.classList.add("tblContainer");
     main.appendChild(tblContainer);
@@ -42,7 +42,7 @@
                 transactionType = "Expense";
             }
             transaction = myBudget.addTransaction(transactionType, myText, myAmount);
-            expenseArr = myBudget.getExpenseSummary(expenseOptionsArr);
+            expenseArr  = myBudget.getExpenseSummary(expenseOptionsArr);
             console.log(expenseArr);
 
             buildTable(transaction, tblContainer, table, tblBody);
@@ -53,9 +53,30 @@
 
             document.getElementById('budgetAmount').value = null;
             document.getElementById('expenseAmount').value = null;
-            google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
         })
+        /*
+                google.charts.load('current', {'packages':['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
+        
+                function drawChart() {
+                
+                    let data = google.visualization.arrayToDataTable([
+                    ['Task', 'Hours per Day'],
+                    ['Entertainment', 50],
+                    ['Food',         100],
+                    ['Clothing',      75],
+                    ['Bills',        500],
+                    ]);
+                
+                    let options = {
+                    title: ''
+                    };
+                
+                    let chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                
+                    chart.draw(data, options);
+                }        
+        */
     }
             //Pie Chart code - JI
     google.charts.load('current', {'packages':['corechart']});
@@ -84,24 +105,7 @@
 }())
 
 
-function drawChart() {
-        
-    let data = google.visualization.arrayToDataTable([
-    ['Task', 'Hours per Day'],
-    ['Entertainment', 50],
-    ['Food',         100],
-    ['Clothing',      75],
-    ['Bills',        500],
-    ]);
 
-    let options = {
-    title: ''
-    };
-
-    let chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-    chart.draw(data, options);
-}
 
 function buildTable(obj, table, tblBody) {
 
@@ -110,8 +114,8 @@ function buildTable(obj, table, tblBody) {
     for (var val of Object.values(obj)) {
         let col = document.createElement('td');
         col.textContent = val;
-        col.style.border = "1px solid green";
-        col.style.padding = "3px";
+        //col.style.border = "1px solid green";
+        //col.style.padding = "3px";
         row.appendChild(col);
     }
 
