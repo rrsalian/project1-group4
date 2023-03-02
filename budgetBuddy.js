@@ -37,7 +37,7 @@
                 transactionType = "Budget";
             }
             else {
-                myText = document.getElementById('expenseText').value;
+                myText = document.getElementById('expenseText').value; 
                 myAmount = +document.getElementById('expenseAmount').value;
                 transactionType = "Expense";
             }
@@ -78,6 +78,30 @@
                 }        
         */
     }
+            //Pie Chart code - JI
+    google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        let data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Entertainment', 50], //Still need to work on the code, so these values update properly.
+          ['Food',         100], //I just hardcoded ones in to see if it would work.
+          ['Clothing',      75], // Anyone have any suggestions?  JI
+          ['Bills',        500],
+        ]);
+
+        let options = {
+          title: ''
+        };
+
+        let chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+            //End of Pie Chart code - JI
+
 }())
 
 
@@ -99,3 +123,8 @@ function buildTable(obj, table, tblBody) {
     tblBody.appendChild(row);
     table.appendChild(row);
 }
+
+
+//Just making notes as I think of things: 
+//Does anyone know how to add that alert if they spend all their budget? JI 
+//Even if it's just a pop-up alert - if(balance <= 0) and it returns an alert? JI
