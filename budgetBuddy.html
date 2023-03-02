@@ -38,8 +38,8 @@
             <div>
                 <label for="expenseText">What are you purchasing?</label>
                 <select name="expenseText" id="expenseText">
-                    <option value="entertainment">Entertainment</option>
-                    <option value="food">Food</option>
+                    <option value="entertainment" selected="selected">Entertainment</option>
+                    <option value="food" >Food</option>
                     <option value="clothing">Clothing</option>
                     <option value="bills">Bills</option>
                 <label for="expenseAmount">Amount</label>
@@ -58,16 +58,19 @@
                 <input id="balance" name="balance" type="number" readonly/>
             </div>
         </section>
-    </section>
+
         <section>
             <div id="piechart"></div>
         </section>
     </section>
+
     <footer>
 
     </footer>
 
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"  type="text/javascript"></script>
     <script src="./budgetClass.js"></script>
     <script src="./budgetBuddy.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>    
 </body>
 </html>

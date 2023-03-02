@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Pie Charts</title>
+    <style>
+        canvas{
+            border: 2px solid #333;
+            margin: 2rem auto;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="c"></canvas>
+    <script>
+        let data = [
+            {expense:"Entertainment", amount: 401},
+            {expense:"Food", amount: 50},
+            {expense:"Clothing", amount: 313},
+            {expense:"Bills", amount: 300}
+        ];
+
+        const randomHexColorCode = () => {
+            return "#" + 
+            Math.random().toString(16).slice(2,8);
+        }
+
+        document.addEventListener('DOMContentLoaded',() => {
+            let canvas = document.getElementById('c');
+            let ctx = canvas.getContext('2d');
+            canvas.width  = 800;
+            canvas.height = 600;
+            
+            let total = data.reduce( (ttl, element) => {
+                return ttl + element.amount
+            }, 0);
+
+            let startAngle = 0;
+            let radius = 100;
+            let cx = canvas.width / 2;
+            let cy = canvas.height / 2;
+
+            data.forEach( element => {
+
+                //set the styles before beginPath
+                ctx.fillStyle = randomHexColorCode();
+                ctx.lineWidth = 1;
+                ctx.strokeStyle = '#333';
+                ctx.beginPath();
+                console.log(total, element.amount, element.amount / total);
+
+                //draw the pie wedges
+                let endAngle = ((element.amount / total) * Math.PI * 2) + startAngle;
+                console.log(endAngle);
+                ctx.moveTo(cx, cy);
+                ctx.arc(cx, cy, radius, startAngle, endAngle, false);
+                ctx.lineTo(cx, cy);
+                ctx.fill();
+                ctx.stroke();
+                ctx.closePath();
+                
+                //add the labels
+                ctx.beginPath();
+                ctx.font = '20px Helvetica, Calibri';
+                ctx.textAlign = 'center';
+                ctx.fillStyle = 'rebeccapurple';
+                // midpoint between the two angles
+                // 1.5 * radius is the length of the hypotenuse
+                let theta = (startAngle + endAngle) / 2;
+                let deltaY = Math.sin(theta) * 1.5 * radius;
+                let deltaX = Math.cos(theta) * 1.5 * radius;
+                ctx.fillText(`${element.expense} ${parseFloat(element.amount / total * 100,2).toFixed(2)}%` , deltaX+cx, deltaY+cy);
+                ctx.closePath();
+                
+                startAngle = endAngle;
+            })
+        })
+
+    </script>
+</body>
+</html>

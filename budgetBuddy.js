@@ -6,12 +6,21 @@
     const main = document.getElementById("main");
     const tblContainer = document.createElement("div");
     const table = document.createElement("table");
-    const tblBody = document.createElement("tbody");    
+    const tblBody = document.createElement("tbody");
+    const select = document.getElementById('expenseText');
+    const expenseOptions = select.options;
+    let expenseArr = [];
+
+    table.classList.add("table");
 
     tblContainer.classList.add("tblContainer");
-
     main.appendChild(tblContainer);
     tblContainer.appendChild(table);
+
+    let expenseOptionsArr = [];
+    for (let i = 0; i < expenseOptions.length; i++) {
+        expenseOptionsArr.push(expenseOptions[i].value);
+    }
 
     const addTransactions = document.querySelectorAll(".addTransaction");
     //console.log(addTransactions);
@@ -32,18 +41,42 @@
                 myAmount = +document.getElementById('expenseAmount').value;
                 transactionType = "Expense";
             }
-            transaction = myBudget.addTransaction(transactionType, myText, myAmount);            
+            transaction = myBudget.addTransaction(transactionType, myText, myAmount);
+            expenseArr  = myBudget.getExpenseSummary(expenseOptionsArr);
+            console.log(expenseArr);
 
-            buildTable(transaction, tblContainer, table, tblBody);            
+            buildTable(transaction, tblContainer, table, tblBody);
 
-            document.getElementById('budget').value  = myBudget.budget;
+            document.getElementById('budget').value = myBudget.budget;
             document.getElementById('expense').value = myBudget.expense;
             document.getElementById('balance').value = myBudget.balance;
-            
+
             document.getElementById('budgetAmount').value = null;
-            document.getElementById('expenseText').value = null;
-            document.getElementById('expenseAmount').value = null;            
+            document.getElementById('expenseAmount').value = null;
         })
+        /*
+                google.charts.load('current', {'packages':['corechart']});
+                google.charts.setOnLoadCallback(drawChart);
+        
+                function drawChart() {
+                
+                    let data = google.visualization.arrayToDataTable([
+                    ['Task', 'Hours per Day'],
+                    ['Entertainment', 50],
+                    ['Food',         100],
+                    ['Clothing',      75],
+                    ['Bills',        500],
+                    ]);
+                
+                    let options = {
+                    title: ''
+                    };
+                
+                    let chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                
+                    chart.draw(data, options);
+                }        
+        */
     }
             //Pie Chart code - JI
     google.charts.load('current', {'packages':['corechart']});
@@ -71,15 +104,18 @@
 
 }())
 
+
+
+
 function buildTable(obj, table, tblBody) {
 
     let row = document.createElement('tr');
 
     for (var val of Object.values(obj)) {
-        let col = document.createElement('td');        
+        let col = document.createElement('td');
         col.textContent = val;
-        col.style.border = "1px solid green";
-        col.style.padding = "3px";
+        //col.style.border = "1px solid green";
+        //col.style.padding = "3px";
         row.appendChild(col);
     }
 
