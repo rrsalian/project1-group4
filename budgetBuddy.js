@@ -12,6 +12,7 @@
     let expenseArr = [];
     
     table.classList.add("table");
+    
     tblContainer.classList.add("tblContainer");
     main.appendChild(tblContainer);
     tblContainer.appendChild(table);
