@@ -39,7 +39,7 @@
             console.log(myBudget.budget);
             console.log(myBudget.balance);
             console.log(myBudget.expense);
-            buildTable(transaction, tblContainer, table, tblBody);
+            //buildTable(transaction, tblContainer, table, tblBody);
 
             document.getElementById('budgetAmount').value = null;
         }
@@ -78,7 +78,7 @@
             expenseSumArray = myBudget.getSumByCategory(expenseOptionsArray); // Expense Summary Array of objects by category for use in graph
             console.log(expenseSumArray);
 
-            buildTable(transaction, tblContainer, table, tblBody);
+            //buildTable(transaction, tblContainer, table, tblBody);
 
             document.getElementById('expenseAmount').value = null;
 
