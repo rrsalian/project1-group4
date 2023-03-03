@@ -1,23 +1,15 @@
 (function () {
 
-    const transactions = [];
-    google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(drawChart);
-    let chart = null;
-    let myBudget = new budget(transactions);
-    budget.counter = 0;
+    const transactions = [];    // array of objects : Objects are list of budget entries and expense objects
+    google.charts.load('current', { 'packages': ['corechart'] });   // required for access to google chart 
+    google.charts.setOnLoadCallback(drawChart);  // Call google drawchart
+    let chart = null;   // Since we do not use local storage initial chart display is off
+    
+    let myBudget = new budget(transactions);    // Class initiation - creates , deletes , updates each transaction
+    budget.counter = 0; // counter required as a counter for the array
 
-    const main = document.getElementById("main");
-    const tblContainer = document.createElement("div");
-    const table = document.createElement("table");
-    const tblBody = document.createElement("tbody");
     const select = document.getElementById('expenseText');
     const expenseOptionsArray = getExpenseOptions();    // get Expense type values like entertainment, food etc in an array
-
-    table.classList.add("table");
-    tblContainer.classList.add("tblContainer");
-    main.appendChild(tblContainer);
-    tblContainer.appendChild(table);
 
     const addBudget = document.querySelector(".addBudget");
     addBudget.addEventListener('click', (e) => {
@@ -25,48 +17,48 @@
         const category = e.target.name.toLowerCase();
         const amount = +document.getElementById('budgetAmount').value;
 
-        if (amount <= 0) {
+        if (amount <= 0) {  // error handing for budget when amount entered is < 0
             document.getElementById("error_msg_budget").innerHTML =
                 "<span>Error: Please enter an amount greater than 0 </span>";            
             document.getElementById("budgetAmount").value = null;
         }
-        else {
+        else {  // budget > 0 
             document.getElementById("error_msg_budget").innerHTML = "";
             const transaction = myBudget.addTransaction(category, '', amount);
             const budgetSumArr = myBudget.getSumByCategory([category]);  // Retrieve sum of amounts by entertainment, food etc.        
             console.log(budgetSumArr);
-            updatePageSummary();   // Update Page Budget , Expense & Balance values
+            updatePageSummary();   // Update Budget , Expense & Balance values in the Page
+
             console.log(myBudget.budget);
             console.log(myBudget.balance);
             console.log(myBudget.expense);
-            //buildTable(transaction, tblContainer, table, tblBody);
-
-            document.getElementById('budgetAmount').value = null;
+            
+            document.getElementById('budgetAmount').value = null;  // blank out the Budget Amount input after changes are posted
         }
     });
 
     const addExpense = document.querySelector(".addExpense");
     addExpense.addEventListener('click', (e) => {
         e.preventDefault();
-        let expenseSumArray = [];
+        let expenseSumArray = [];   // array of objects : expense object consists of id, expense, category, amount  
         const amount = +document.getElementById('expenseAmount').value;
         const currBudget = +document.getElementById('budget').value;
         const currBalance = +document.getElementById('balance').value;
-        console.log(currBalance);
-        console.log(amount);
-        console.log(currBudget);
+        //console.log(currBalance);
+        //console.log(amount);
+        //console.log(currBudget);
 
-        if (amount <= 0) {
+        if (amount <= 0) {      // error handing for expense when amount entered is < 0
             document.getElementById("error_msg_expense").innerHTML =
                 "<span>Error: Please enter an amount greater than 0 </span>";
             document.getElementById("expenseAmount").value = null;
         }
-        else if (((currBalance - amount)/currBudget * 100) <= 10) {
+        else if (((currBalance - amount)/currBudget * 100) <= 10) {  // this handles error handling when balance about to reduce to 10 % or below
             document.getElementById("error_msg_expense").innerHTML =
                 "<span>Error: Please maintain a balance of more than 10% </span>";
                 document.getElementById("expenseAmount").value = null;
         }
-        else {
+        else {  // everything else
             document.getElementById("error_msg_expense").innerHTML = "";
             const transaction = myBudget.addTransaction("Expense",
                 document.getElementById('expenseText').value,
@@ -82,6 +74,7 @@
 
             document.getElementById('expenseAmount').value = null;
 
+            // data points for google pie chart
             let data = google.visualization.arrayToDataTable([
                 ['Expense Type', 'Amount'],
                 [expenseSumArray[0].text, +expenseSumArray[0].total], 
@@ -97,12 +90,13 @@
         }
     })
 
+    // get array list of expense categories from the select input
     function getExpenseOptions() {
         let OptionsArr = [];
         for (let i = 0; i < select.options.length; i++) {
             OptionsArr.push(select.options[i].value);
         }
-        return OptionsArr;
+        return OptionsArr;  // ["entertainment", "food", "clothing", "bills"]
     }
 
     // Upadate Page summary for Budget , Expense & balance when budget/expenses are adjusted
@@ -112,7 +106,7 @@
         document.getElementById('balance').value = myBudget.balance;
     }
 
-    //Pie Chart code - JI
+    //Pie Chart code - JI - initially chart won't show since we do not have local storage
     function drawChart() {
 
         let data = google.visualization.arrayToDataTable([
@@ -133,21 +127,3 @@
     }
     //End of Pie Chart code - JI
 }())
-
-
-function buildTable(obj, table, tblBody) {
-
-    let row = document.createElement('tr');
-
-    for (var val of Object.values(obj)) {
-        let col = document.createElement('td');
-        col.textContent = val;
-        //col.style.border = "1px solid green";
-        //col.style.padding = "3px";
-        row.appendChild(col);
-    }
-
-    row.style.columnWidth = "20 px";
-    tblBody.appendChild(row);
-    table.appendChild(row);
-}
