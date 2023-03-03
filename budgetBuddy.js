@@ -67,6 +67,8 @@
 
             updatePageSummary();   // Update Page Summary for Budget , Expense & Balance values
 
+
+
             expenseSumArray = myBudget.getSumByCategory(expenseOptionsArray); // Expense Summary Array of objects by category for use in graph
             console.log(expenseSumArray);
 
@@ -84,7 +86,8 @@
             ]);
 
             let options = {
-                title: ''
+                title: '',
+                backgroundColor: "#F0F0F0"
             };
             chart.draw(data, options);
         }
@@ -118,7 +121,8 @@
         ]);
 
         let options = {
-            title: ''
+            title: '',
+            backgroundColor: "#F0F0F0"
         };
 
         chart = new google.visualization.PieChart(document.getElementById('piechart'));
