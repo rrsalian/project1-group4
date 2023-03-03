@@ -4,6 +4,7 @@
     font-family: 'Lato', sans-serif;
     font-family: 'Open Sans', sans-serif;
 }
+
 header {
     color: #3e3e3e;
     /* background-color: #00a2db; */
@@ -15,6 +16,7 @@ header {
     background-image: linear-gradient(#cee7f1, #e6eef2);
     width: 100%;
 }
+
 h1 {
     background-color: #f0f0f0;
     color: #00a2db;
@@ -22,11 +24,13 @@ h1 {
     text-align: center;
     animation: fadeIn 5s;
 }
+
 section {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
 #allAround {
     display: flex;
     flex-direction: column;
@@ -36,6 +40,7 @@ section {
     background-color: #f0f0f0;
     box-sizing: border-box;
 }
+
 #mainContainer {
     border-radius: 50px;
     background-color: #cee7f1;
@@ -46,8 +51,9 @@ section {
     align-items: center;
     padding: 10px;
     margin-bottom: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+
 #expenses {
     border-radius: 50px;
     width: 400px;
@@ -59,8 +65,9 @@ section {
     margin-bottom: 10px;
     padding: 10px;
     background-image: linear-gradient(#bbc9b4, #ced4cd);
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+
 #data {
     border-radius: 50px;
     width: 400px;
@@ -70,10 +77,11 @@ section {
     flex-wrap: wrap;
     padding: 10px;
     background-image: linear-gradient(#f5be8a, #eaddc6);
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin-bottom: 10px;
     text-align: center;
 }
+
 button {
     background-color: #599bff;
     color: #f5f5f5;
@@ -82,10 +90,12 @@ button {
     border-radius: 35px;
     border: 1px solid #599bff;
 }
+
 #expenseText {
     height: 25px;
     width: 125px;
 }
+
 input {
     height: 25px;
     width: 100px;
@@ -99,48 +109,39 @@ input {
     height: 300px;
     align-self: center;
 }
+
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-  @media screen and (min-width: 768px) {
-header {
-    height: 75px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#desktopLayout {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-#mainContainer, #expenses, #data {
-    margin: 10px
-}
-#allAround {
-    height: 100vh;
-}
-  }
-/* Joan - I tested these out.  You're probably working on them, but I wanted to help where I can...
-        The title wasn't showing up, so I added an h1 and moved the background-color from 
-        * to a section.  The header shows up then.  I also changed it so the amounts are entered from the middle, rather than the side.
-         I also added a footer... in my head I'm thinking it'd be cool to have an animation in it,
-         but I don't know what.  -JI*/
+    0% {
+        opacity: 0;
+    }
 
-/* footer {
-    height: 100px;
-    width: 100%;
+    100% {
+        opacity: 1;
+    }
 }
 
-h1 {
-    font-weight: bold;
-    font-size: 25px;
-    text-transform: uppercase;
-    text-align: center;
-    padding-top: 10px;
-}
+@media screen and (min-width: 768px) {
+    header {
+        height: 75px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-#budgetAmount, #expenseAmount {
-    text-align: center;
-} */
+    #desktopLayout {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #mainContainer,
+    #expenses,
+    #data {
+        margin: 10px;
+        width: 300px;
+    }
+
+    #allAround {
+        height: 100vh;
+    }
+}
