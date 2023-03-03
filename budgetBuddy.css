@@ -116,6 +116,10 @@ label {
     width: 150px;
 }
 
+#error_msg_expense, #error_msg_budget {
+    color: red;
+}
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
