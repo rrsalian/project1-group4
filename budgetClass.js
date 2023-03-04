@@ -20,7 +20,7 @@ class budget {
     }
 
     deleteTransaction(id) {
-        const index = this.transactions.find(element => element.id = id);
+        const index = this.transactions.find(element => element.id = +id);
         this.transactions.splice(index, 1);
         this.updateValues();
     }
