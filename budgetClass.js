@@ -2,9 +2,9 @@ class budget {
     budget = 0;
     expense = 0;
     balance = 0;
-    transactions = [];
+    transactions = [];   // array of objects
 
-    constructor(transactions) {
+    constructor(transactions) {  // initialize the object
         this.transactions;
     }
 
@@ -16,12 +16,12 @@ class budget {
         transaction.amount = amount;
         this.transactions.push(transaction);
         this.updateValues();
-        return transaction;
+        return transaction;  //  {id: 2, category: 'Expense', text: 'Entertainment', amount: 20}
     }
 
     deleteTransaction(id) {
-        const index = this.transactions.find(element => element.id = +id);
-        this.transactions.splice(index, 1);
+        const index = this.transactions.findIndex(element => element.id = +id);
+        this.transactions.splice(index, 1);  // remove an expense/budge from the transactions
         this.updateValues();
     }
 
@@ -38,9 +38,16 @@ class budget {
                 return a + b.amount;
             },0);
             total = parseFloat(total).toFixed(2);
-            categoryArr.push({text:array[i], total:total});
+            categoryArr.push({text:array[i], total:total});  // this will be used in the graph
         }       
-        return categoryArr;
+        return categoryArr;  
+        /*
+            Summary by Category - 
+            [{text: 'Entertainment', total: '29.65'},
+             {text: 'Food', total: '54.59'},
+             {text: 'Clothing', total: '57.11'},
+             {text: 'Bills', total: '106.12'}]
+        */
     }
 
     updateValues() {
